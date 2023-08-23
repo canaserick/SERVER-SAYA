@@ -1,0 +1,122 @@
+{
+    "operacion" : "insert",
+    "tabla" : "variedad",
+    "campos" :  [
+        {
+            "campo" : "descripcion",
+            "valor" : "beautyrose",
+            "tipo"  : "string"
+        },
+        {
+            "campo" : "longitud",
+            "valor" : 2,
+            "tipo"  : "int"
+        },
+        {
+            "campo" : "cant_rama",
+            "valor" : 12,
+            "tipo"  : "int"
+        },
+        {
+            "campo" : "cant_malla",
+            "valor" : 12,
+            "tipo"  : "int"
+        },
+        {
+            "campo" : "dias_util",
+            "valor" : 5,
+            "tipo"  : "int"
+        }
+    ]
+}
+
+{
+    "operacion" : "select",
+    "tabla" : "variedad",
+    "campos" : [
+        { "campo" : "*" },
+        { "campo" : "descripcion"} , 
+        { "campo" : "longitud"},
+        { "campo" : "dias_util"}    
+    ],
+    "condiciones" : [
+        {
+            "campo" : "id",
+            "cond"  : "=",
+            "valor" : "1",
+            "tipo"  : "int"
+        },
+        {
+            "campo" : "dias_util",
+            "cond"  : "<",
+            "valor" : "2",
+            "tipo"  : "int"
+        },
+        {
+            "campo" : "descripcion",
+            "cond"  : "=",
+            "valor" : "beautyrose",
+            "tipo"  : "string"
+        }
+    ]
+}
+
+{
+    "operacion" : "update",
+    "tabla" : "variedad",
+    "campos" : [
+        { "campo" : "descripcion",
+          "valor" : "newrose",
+          "tipo"  : "string"
+        },
+        { "campo" : "longitud",
+          "valor" : "1.7",
+          "tipo"  : "int"
+        } 
+    ],
+    "condiciones" : [
+        {
+            "campo" : "id",
+            "cond"  : "=",
+            "valor" : "1",
+            "tipo"  : "int"
+        },
+        {
+            "campo" : "dias_util",
+            "cond"  : "<",
+            "valor" : "2",
+            "tipo"  : "int"
+        },
+        {
+            "campo" : "descripcion",
+            "cond"  : "=",
+            "valor" : "beautyrose",
+            "tipo"  : "string"
+        }
+    ]    
+}
+
+{
+    "operacion" : "delete",
+    "tabla" : "variedad",
+    "condiciones" : [
+        {
+            "campo" : "id",
+            "cond"  : "=",
+            "valor" : "1",
+            "tipo"  : "int"
+        },
+        {
+            "campo" : "dias_util",
+            "cond"  : "<",
+            "valor" : "2",
+            "tipo"  : "int"
+        },
+        {
+            "campo" : "descripcion",
+            "cond"  : "=",
+            "valor" : "beautyrose",
+            "tipo"  : "string"
+        }
+    ]    
+}
