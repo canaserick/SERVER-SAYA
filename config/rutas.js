@@ -42,6 +42,47 @@ rutas.post('/login', (req, res) => {
      
 });
 
+
+/* STORED PROCEDURE PRODUCCION*/
+const sp_produccion = (variedad, descripcion, mallas, tallos) => {
+    return new Promise((resolve, reject) => {
+        conexion.query('CALL Produccion(?, ?, ?, ?, @result)', [variedad, descripcion, mallas, tallos], (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+            conexion.query('SELECT @result AS result', (err, result) => {
+            if (err) {
+              reject(err);
+            } else {
+              const resultado = result[0].result;
+              resolve(resultado);
+            }
+          });
+        }
+      });
+    });
+  };
+
+rutas.post('/pr_produccion', (req, res) => {
+    const data = req.body;
+    var resultado = 0;
+    const variedad = data.variedad;
+    const descripcion = data.descripcion;
+    const mallas = data.mallas;
+    const tallos = data.tallos;
+
+    sp_produccion(variedad, descripcion, mallas, tallos)
+    .then(resultado => {
+      console.log('Resultado:', resultado);
+      res.json(resultado);
+    })
+    .catch(error => {
+      console.error('Error en el sp:', error);
+    })
+
+}); // FIN DEL STORED PROCEDURE
+
+
 // ** SELECT **
 rutas.post('/select', (req, res) => {
     const data = req.body;
